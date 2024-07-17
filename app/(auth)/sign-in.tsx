@@ -12,11 +12,16 @@ import CustomText from '~/components/CustomText';
 import { CheckBox } from '@rneui/base';
 import GoogleIcon from '~/components/icon/GoogleIcon';
 import LockIcon from '~/components/icon/LockIcon';
+import { useRouter } from 'expo-router';
 
 const Page = () => {
+  const router = useRouter();
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView>
+      <ScrollView
+        style={{
+          flex: 1,
+        }}>
         <BackButton />
         <CustomHeaderTitle
           style={{
@@ -50,9 +55,19 @@ const Page = () => {
             style={{
               marginTop: 20,
             }}>
-            <Button title="Register" />
+            <Button
+              title="Sign In"
+              onPress={() => {
+                router.push('/(guarded)');
+              }}
+            />
           </View>
-          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
+          <View
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              gap: 6,
+            }}>
             <View
               style={{
                 flex: 1,
@@ -93,30 +108,34 @@ const Page = () => {
               Sign Up with Google
             </CustomText>
           </View>
-          <View
+        </View>
+        <View
+          style={{
+            justifyContent: 'center',
+            flexDirection: 'row',
+            gap: 4,
+            marginTop: 124,
+          }}>
+          <CustomText
             style={{
-              justifyContent: 'center',
-              flexDirection: 'row',
-              gap: 4,
+              // fontFamily: 'poppins',
+              color: '#555',
+              fontFamily: 'gotham',
+            }}>
+            Don't have an account?
+          </CustomText>
+          <TouchableOpacity
+            onPress={() => {
+              router.push('/(auth)/sign-up');
             }}>
             <CustomText
               style={{
-                // fontFamily: 'poppins',
-                color: '#555',
+                color: '#4425F5',
                 fontFamily: 'gotham',
               }}>
-              Already have an account?
+              Sign Up
             </CustomText>
-            <TouchableOpacity>
-              <CustomText
-                style={{
-                  color: '#4425F5',
-                  fontFamily: 'gotham',
-                }}>
-                Sign In
-              </CustomText>
-            </TouchableOpacity>
-          </View>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </SafeAreaView>

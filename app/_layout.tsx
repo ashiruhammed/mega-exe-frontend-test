@@ -3,6 +3,7 @@ import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
 import { Poppins_500Medium } from '@expo-google-fonts/poppins';
+import { Gesture, GestureHandlerRootView } from 'react-native-gesture-handler';
 
 export default function Layout() {
   const [loaded, error] = useFonts({
@@ -23,10 +24,12 @@ export default function Layout() {
     return null;
   }
   return (
-    <Stack
-      screenOptions={{
-        headerShown: false,
-      }}
-    />
+    <GestureHandlerRootView>
+      <Stack
+        screenOptions={{
+          headerShown: false,
+        }}
+      />
+    </GestureHandlerRootView>
   );
 }
