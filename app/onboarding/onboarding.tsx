@@ -1,10 +1,39 @@
 import { useRouter } from 'expo-router';
 import React from 'react';
-import { Image, ImageBackground, StatusBar, Text, View } from 'react-native';
+import {
+  FlatList,
+  Image,
+  ImageBackground,
+  StatusBar,
+  Text,
+  useWindowDimensions,
+  View,
+} from 'react-native';
+import Animated from 'react-native-reanimated';
 import { Button } from '~/components/Button';
+
+const onboardingData = [
+  {
+    imgSrc: require('~/assets/images/onboarding-1.png'),
+    title: ' Convenient Telehealth: Virtual Consultations and Follow-up... Anytime, Anywhere',
+  },
+  {
+    imgSrc: require('~/assets/images/onboarding-2.png'),
+    title: 'Prescriptions Plus.....Your One-Stop Shop For Medicines, Equipment and More',
+  },
+  {
+    imgSrc: require('~/assets/images/onboarding-3.png'),
+    title: 'Prescriptions Plus.....Your One-Stop Shop For Medicines, Equipment and More',
+  },
+  {
+    imgSrc: require('~/assets/images/onboarding-4.png'),
+    title: 'Prescriptions Plus.....Your One-Stop Shop For Medicines, Equipment and More',
+  },
+];
 
 const Page = () => {
   const router = useRouter();
+  const { width } = useWindowDimensions();
   return (
     <>
       <StatusBar hidden />
@@ -18,32 +47,59 @@ const Page = () => {
             left: 25,
           }}
         />
-        <ImageBackground
-          source={require('../../assets/images/onboarding-1.png')}
-          style={{
-            height: '100%',
-          }}>
-          <ImageBackground
-            source={require('../../assets/images/overlay.png')}
-            style={{ flex: 1, justifyContent: 'center', paddingLeft: 25 }}>
-            <Text
-              style={{
-                fontSize: 27,
-                color: 'white',
-                fontFamily: 'poppins',
-                marginTop: 267,
-              }}>
-              Convenient Telehealth: Virtual Consultations and Follow-up... Anytime, Anywhere
-            </Text>
-            <Text
-              style={{
-                color: '#E32654',
-                fontSize: 16,
-              }}>
-              With Hospyta
-            </Text>
-          </ImageBackground>
-        </ImageBackground>
+
+        <Animated.FlatList
+          data={onboardingData}
+          horizontal
+          snapToInterval={width}
+          bounces={false}
+          showsHorizontalScrollIndicator={false}
+          decelerationRate="normal"
+          pagingEnabled={true}
+          scrollEventThrottle={16}
+          getItemLayout={(data, index) => ({
+            length: width, // Replace width with the height or width of your items
+            offset: width * index,
+            index,
+          })}
+          viewabilityConfig={{
+            minimumViewTime: 300,
+            viewAreaCoveragePercentThreshold: 10,
+          }}
+          renderItem={({ item, index }) => (
+            <View>
+              <ImageBackground
+                key={index}
+                source={item.imgSrc}
+                style={{
+                  height: '100%',
+                }}>
+                <ImageBackground
+                  resizeMode="cover"
+                  source={require('../../assets/images/overlay.png')}
+                  style={{ flex: 1, justifyContent: 'center', paddingLeft: 25, width }}>
+                  <Text
+                    style={{
+                      fontSize: 27,
+                      color: 'white',
+                      fontFamily: 'poppins',
+                      marginTop: 267,
+                    }}>
+                    {item.title}
+                  </Text>
+                  <Text
+                    style={{
+                      color: '#E32654',
+                      fontSize: 16,
+                    }}>
+                    With Hospyta
+                  </Text>
+                </ImageBackground>
+              </ImageBackground>
+            </View>
+          )}
+        />
+
         <View
           style={{
             position: 'absolute',
