@@ -3,12 +3,28 @@ import { StyleSheet, Text, TouchableOpacity, TouchableOpacityProps } from 'react
 
 type ButtonProps = {
   title?: string;
+  type?: 'solid' | 'outline';
 } & TouchableOpacityProps;
 
 export const Button = forwardRef<TouchableOpacity, ButtonProps>(
-  ({ title, ...touchableProps }, ref) => {
-    return (
-      <TouchableOpacity ref={ref} {...touchableProps} style={[styles.button, touchableProps.style]}>
+  ({ title, type, ...touchableProps }, ref) => {
+    return type === 'outline' ? (
+      <TouchableOpacity
+        ref={ref}
+        style={[
+          styles.button,
+          {
+            backgroundColor: 'transparent',
+            borderColor: '#fff',
+            borderWidth: 1,
+            shadowColor: 'transparent',
+          },
+        ]}
+        {...touchableProps}>
+        <Text style={styles.buttonText}>{title}</Text>
+      </TouchableOpacity>
+    ) : (
+      <TouchableOpacity ref={ref} style={styles.button} {...touchableProps}>
         <Text style={styles.buttonText}>{title}</Text>
       </TouchableOpacity>
     );
@@ -18,8 +34,8 @@ export const Button = forwardRef<TouchableOpacity, ButtonProps>(
 const styles = StyleSheet.create({
   button: {
     alignItems: 'center',
-    backgroundColor: '#6366F1',
-    borderRadius: 24,
+    backgroundColor: '#4425F5',
+    borderRadius: 8,
     elevation: 5,
     flexDirection: 'row',
     justifyContent: 'center',
@@ -35,7 +51,8 @@ const styles = StyleSheet.create({
   buttonText: {
     color: '#FFFFFF',
     fontSize: 16,
-    fontWeight: '600',
+
     textAlign: 'center',
+    fontFamily: 'gotham',
   },
 });

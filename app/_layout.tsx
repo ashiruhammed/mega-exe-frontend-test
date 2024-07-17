@@ -10,7 +10,7 @@ export default function Layout() {
     axiforma: require('./../assets/fonts/axiforma/Axiforma-Regular.ttf'),
     axiformaSemiBold: require('./../assets/fonts/axiforma/Axiforma-SemiBold.ttf'),
     gothamMedium: require('./../assets/fonts/gotham/GothamPro-Medium.ttf'),
-    Poppins_500Medium,
+    poppins: Poppins_500Medium,
   });
 
   useEffect(() => {
