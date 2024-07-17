@@ -12,10 +12,11 @@ import CustomText from '~/components/CustomText';
 import { CheckBox } from '@rneui/base';
 import GoogleIcon from '~/components/icon/GoogleIcon';
 import LockIcon from '~/components/icon/LockIcon';
-import { useRouter } from 'expo-router';
+import { useNavigation, useRouter } from 'expo-router';
 
 const Page = () => {
   const router = useRouter();
+  const navigation = useNavigation();
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView
