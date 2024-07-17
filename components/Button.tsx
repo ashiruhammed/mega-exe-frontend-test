@@ -3,13 +3,15 @@ import { StyleSheet, Text, TouchableOpacity, TouchableOpacityProps } from 'react
 
 type ButtonProps = {
   title?: string;
-  type?: 'solid' | 'outline';
+  variant?: 'solid' | 'outline';
+  type?: 'button' | 'submit';
 } & TouchableOpacityProps;
 
 export const Button = forwardRef<TouchableOpacity, ButtonProps>(
-  ({ title, type, ...touchableProps }, ref) => {
-    return type === 'outline' ? (
-      <TouchableOpacity
+  ({ title, variant, type = 'button', ...touchableProps }, ref) => {
+    return variant === 'outline' ? (
+      <Button
+        type={type}
         ref={ref}
         style={[
           styles.button,
@@ -22,11 +24,11 @@ export const Button = forwardRef<TouchableOpacity, ButtonProps>(
         ]}
         {...touchableProps}>
         <Text style={styles.buttonText}>{title}</Text>
-      </TouchableOpacity>
+      </Button>
     ) : (
-      <TouchableOpacity ref={ref} style={styles.button} {...touchableProps}>
+      <Button type={type} ref={ref} style={styles.button} {...touchableProps}>
         <Text style={styles.buttonText}>{title}</Text>
-      </TouchableOpacity>
+      </Button>
     );
   }
 );

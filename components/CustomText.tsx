@@ -4,9 +4,12 @@ import React from 'react';
 const CustomText = ({ children, style }: { children: React.ReactNode; style: TextStyle }) => {
   return (
     <Text
-      style={{
-        fontFamily: 'axiforma',
-      }}>
+      style={[
+        {
+          fontFamily: 'axiforma',
+        },
+        style,
+      ]}>
       {children}
     </Text>
   );

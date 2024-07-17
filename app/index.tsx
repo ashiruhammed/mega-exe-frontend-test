@@ -1,11 +1,7 @@
-import { Stack, Link, Redirect } from 'expo-router';
-
-import { Button } from '~/components/Button';
-import { Container } from '~/components/Container';
-import CustomText from '~/components/CustomText';
-import { ScreenContent } from '~/components/ScreenContent';
+import { Redirect } from 'expo-router';
 
 export default function Home() {
+  console.log('cool');
   return (
     <>
       <Redirect href="/onboarding/onboarding" />

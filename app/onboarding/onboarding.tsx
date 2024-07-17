@@ -2,8 +2,10 @@ import { View, Text, ImageBackground, StatusBar, Image, TouchableOpacity } from 
 import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Button } from '~/components/Button';
+import { useRouter } from 'expo-router';
 
 const Page = () => {
+  const router = useRouter();
   return (
     <>
       <StatusBar hidden />
@@ -51,8 +53,13 @@ const Page = () => {
             right: 25,
             gap: 20,
           }}>
-          <Button title="Sign In" />
-          <Button title="Sign Up" type="outline" />
+          <Button
+            title="Sign In"
+            onPress={() => {
+              router.push('/(auth)/sign-in');
+            }}
+          />
+          <Button title="Sign Up" variant="outline" />
         </View>
       </View>
     </>
