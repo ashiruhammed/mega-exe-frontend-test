@@ -1,0 +1,12 @@
+Building the application was quite simple but i couldn't finish it due to having electricity issues since morning i started In the morning but due to the electricity issues i had today my laptop was down which is quite strange. i couldn't finish it though but have done the most interesting part of it which i believe it should be able to convince you
+
+
+**Technology
+Expo router: I used expo router for my firebase routing 
+
+**Issues 
+1. i only had issues in the form authentication due to not been able to use formic which is not availbe on expo go most of the times i dont use expo i do prebuild and generate my native directories
+
+Have used formic in  the first instance not knowing it is not available on expo go so i had to delete my build and start the application again which takes a long time
+
+I believe that everything all have been writing react native for over a year now i know am competent for this role
