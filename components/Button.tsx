@@ -4,14 +4,12 @@ import { StyleSheet, Text, TouchableOpacity, TouchableOpacityProps } from 'react
 type ButtonProps = {
   title?: string;
   variant?: 'solid' | 'outline';
-  type?: 'button' | 'submit';
 } & TouchableOpacityProps;
 
 export const Button = forwardRef<TouchableOpacity, ButtonProps>(
-  ({ title, variant, type = 'button', ...touchableProps }, ref) => {
+  ({ title, variant, ...touchableProps }, ref) => {
     return variant === 'outline' ? (
-      <Button
-        type={type}
+      <TouchableOpacity
         ref={ref}
         style={[
           styles.button,
@@ -24,11 +22,11 @@ export const Button = forwardRef<TouchableOpacity, ButtonProps>(
         ]}
         {...touchableProps}>
         <Text style={styles.buttonText}>{title}</Text>
-      </Button>
+      </TouchableOpacity>
     ) : (
-      <Button type={type} ref={ref} style={styles.button} {...touchableProps}>
+      <TouchableOpacity ref={ref} style={styles.button} {...touchableProps}>
         <Text style={styles.buttonText}>{title}</Text>
-      </Button>
+      </TouchableOpacity>
     );
   }
 );

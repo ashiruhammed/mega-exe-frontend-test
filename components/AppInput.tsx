@@ -2,7 +2,7 @@ import { View, Text, TextStyle, TextInputProps, TextInput } from 'react-native';
 import React from 'react';
 
 type InputProps = TextInputProps & {
-  leftIcon: React.ReactNode;
+  leftIcon?: React.ReactNode;
   error?: string;
 };
 
@@ -27,6 +27,7 @@ const AppInput = ({ leftIcon, error, ...props }: InputProps) => {
             paddingVertical: 18,
             marginLeft: 16,
           }}
+          placeholderTextColor="#000"
         />
       </View>
       {error && (

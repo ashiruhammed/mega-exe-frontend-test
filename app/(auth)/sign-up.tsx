@@ -11,7 +11,6 @@ import { Button } from '~/components/Button';
 import CustomText from '~/components/CustomText';
 import { CheckBox } from '@rneui/base';
 import GoogleIcon from '~/components/icon/GoogleIcon';
-import LockIcon from '~/components/icon/LockIcon';
 
 const Page = () => {
   return (
@@ -23,7 +22,7 @@ const Page = () => {
             marginTop: 48,
             textAlign: 'center',
           }}>
-          Hello Dr!
+          Register Account
         </CustomHeaderTitle>
         <Text
           style={{
@@ -37,15 +36,29 @@ const Page = () => {
           {'Fill your details or continue with\n social media'}
         </Text>
         <View style={{ gap: 16, marginTop: 16 }}>
+          <AppInput placeholder="First Name" leftIcon={<UserIcon />} />
+          <AppInput placeholder="Last Name" leftIcon={<UserIcon />} />
           <AppInput placeholder="example@gmail.com" leftIcon={<MailIcon />} />
-          <AppInput placeholder="********" leftIcon={<LockIcon />} />
-          <CustomText
-            style={{
-              alignSelf: 'flex-end',
-              fontSize: 14,
-            }}>
-            Forgot Password ?
-          </CustomText>
+          <AppInput placeholder="********" leftIcon={<UserIcon />} />
+          <CheckBox
+            // Use ThemeProvider to make change for all checkbox
+            containerStyle={{
+              backgroundColor: 'transparent',
+              margin: 0,
+              padding: 0,
+            }}
+            textStyle={{
+              fontFamily: 'gotham',
+              fontSize: 12,
+              fontWeight: 400,
+            }}
+            iconType="material-community"
+            checkedIcon="checkbox-marked"
+            uncheckedIcon="checkbox-blank-outline"
+            checked
+            title="I accept all the Terms & Conditions"
+            checkedColor="#4425F5"
+          />
           <View
             style={{
               marginTop: 20,
