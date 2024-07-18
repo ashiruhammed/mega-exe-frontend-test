@@ -54,7 +54,7 @@ const Page = () => {
           snapToInterval={width}
           bounces={false}
           showsHorizontalScrollIndicator={false}
-          decelerationRate={0.7}
+          decelerationRate={0.9}
           pagingEnabled={true}
           scrollEventThrottle={16}
           getItemLayout={(data, index) => ({
