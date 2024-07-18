@@ -11,8 +11,10 @@ import { Button } from '~/components/Button';
 import CustomText from '~/components/CustomText';
 import { CheckBox } from '@rneui/base';
 import GoogleIcon from '~/components/icon/GoogleIcon';
+import { useRouter } from 'expo-router';
 
 const Page = () => {
+  const router = useRouter();
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
@@ -120,7 +122,10 @@ const Page = () => {
               }}>
               Already have an account?
             </CustomText>
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                router.push('/(auth)/sign-in');
+              }}>
               <CustomText
                 style={{
                   color: '#4425F5',
